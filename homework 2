@@ -1,0 +1,7 @@
+<?php
+$a= "";
+if(empty($a))
+    echo "NULL";
+else
+    echo $a;
+?>
