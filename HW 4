@@ -1,0 +1,44 @@
+<?php
+$a = "Ua";
+if ($a == "En") {
+    echo 'Vladyslav Verbytskyi';
+} elseif ($a == "Ua") {
+    echo 'Вербицький Владислав';
+}
+?>
+
+<?php
+$var = 0;
+if ($var > 0 && $var < 6) {
+    echo 'True';
+}
+else
+    echo 'False';
+?>
+
+<?php
+$var = 5;
+if ($var > 0 && $var < 6) {
+    echo 'True';
+}
+else
+    echo 'False';
+?>
+
+<?php
+$var = -3;
+if ($var > 0 && $var < 6) {
+    echo 'True';
+}
+else
+    echo 'False';
+?>
+
+<?php
+$var = 2;
+if ($var > 0 && $var < 6) {
+    echo 'True';
+}
+else
+    echo 'False';
+?>
