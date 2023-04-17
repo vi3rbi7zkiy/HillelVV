@@ -1,0 +1,43 @@
+<?php
+$array = [];
+for ($i = 0; $i < 30; $i++) {
+    $array[] = rand(1, 50);
+}
+echo "Массив: " . implode(", ", $array) . "\n";
+$sum = 0;
+foreach ($array as $value) {
+    $sum += $value;
+}
+echo "Сумма элементов массива: " . $sum . "\n";
+$product = 1;
+foreach ($array as $value) {
+    $product *= $value;
+}
+echo "Умноженние элементов массива: " . $product . "\n";
+$count = 0;
+foreach ($array as $value) {
+    if ($value == 5) {
+        $count++;
+    }
+}
+echo "Количество элементов массива, равняющихся 5: " . $count . "\n";
+echo "Числа, которые делятся без остатка на 3: ";
+foreach ($array as $value) {
+    if ($value % 3 == 0) {
+        echo $value . " ";
+    }
+}
+echo "\n";
+$min = $array[0];
+$max = $array[0];
+foreach ($array as $value) {
+    if ($value < $min) {
+        $min = $value;
+    }
+    if ($value > $max) {
+        $max = $value;
+    }
+}
+echo "Мин. значения массива: " . $min . "\n";
+echo "Макс. значение массива: " . $max . "\n";
+?>
