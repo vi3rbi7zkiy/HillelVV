@@ -1,0 +1,32 @@
+<?php
+function filterArray($arr, $callback) {
+    $filteredArr = array_filter($arr, $callback);
+    return array_values($filteredArr);
+}
+
+$numbers = [1, 2, 3, 4, 5, 6];
+$filteredNumbers = filterArray($numbers, function($num) {
+    return $num % 2 == 0;
+});
+
+print_r($filteredNumbers);
+////////////////////////1
+$numbers = [5, 10, 15, 20, 25];
+$sum = array_reduce($numbers, function($acc, $num) {
+    return $num > 10 ? $acc + $num : $acc;
+}, 0);
+
+echo $sum;
+//////////////////////////3
+$words = ["Яблоко, "Банан", "Груша"];
+$upperCaseFirst = fn($str) => ucfirst($str);
+$words = array_map($upperCaseFirst, $words);
+
+print_r($words);
+////////////////////////////4
+function multiplyArrayElements(&$arr, $multiplier) {
+    foreach ($arr as &$value) {
+        $value *= $multiplier;
+    }
+}
+////////////////////////5
