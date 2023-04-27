@@ -1,0 +1,29 @@
+<?php
+$data = array();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $text = $_POST["text"];
+
+
+    $checkbox = isset($_POST["checkbox"]) ? $_POST["checkbox"] : "";
+
+
+    $radio = isset($_POST["radio"]) ? $_POST["radio"] : "";
+
+
+    $select = $_POST["select"];
+
+    $file = $_FILES["file"]["name"];
+
+    $data = array(
+        "text" => $text,
+        "checkbox" => $checkbox,
+        "radio" => $radio,
+        "select" => $select,
+        "file" => $file
+    );
+}
+?>
+
+<pre><?php print_r($data); ?></pre>
