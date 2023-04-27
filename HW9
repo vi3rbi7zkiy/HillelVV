@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="wi  dth=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="New%20Text%20Document.css">
+</head>
+<body>
+
+</body>
+</html>
+<?php
+$vacancies = [
+    0 => ['id' => 1, 'title' => 'PHP Programmer', 'salary' => 2500, 'sector_id' => 1],
+    1 => ['id' => 2, 'title' => 'Designer', 'salary' => 3000, 'sector_id' => 1],
+    2 => ['id' => 3, 'title' => 'Finance Manager', 'salary' => 3500, 'sector_id' => 2],
+    3 => ['id' => 4, 'title' => 'Finance Director', 'salary' => 3500, 'sector_id' => 2],
+];
+
+$sectors = [
+    0 => ['id' => 1, 'title' => 'IT'],
+    1 => ['id' => 2, 'title' => 'Finance']
+];
+
+$sector_titles = [];
+foreach ($sectors as $sector) {
+    $sector_titles[$sector['id']] = $sector['title'];
+}
+
+$merged_array = [];
+foreach ($vacancies as $vacancy) {
+    $sector_id = $vacancy['sector_id'];
+    $sector_title = $sector_titles[$sector_id];
+    $merged_array[] = [
+        'title' => $vacancy['title'],
+        'salary' => $vacancy['salary'],
+        'sector' => $sector_title
+    ];
+}
+
+echo '<table class="vacancies">';
+echo '<thead>';
+echo '<tr><th>Title</th><th>Salary</th><th>Sector</th></tr>';
+echo '</thead>';
+echo '<tbody>';
+foreach ($merged_array as $row) {
+    echo '<tr>';
+    echo '<td>' . $row['title'] . '</td>';
+    echo '<td>' . $row['salary'] . '</td>';
+    echo '<td>' . $row['sector'] . '</td>';
+    echo '</tr>';
+}
+echo '</tbody>';
+echo '</table>';
+?>
