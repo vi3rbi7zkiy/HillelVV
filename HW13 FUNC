@@ -1,0 +1,32 @@
+<?php
+
+session_start();
+
+function set_alert($message, $type = 'info')
+{
+    if (!isset($_SESSION['alerts'])) {
+        $_SESSION['alerts'] = array();
+    }
+    array_push($_SESSION['alerts'], array(
+        'type' => $type,
+        'message' => $message
+    ));
+}
+
+function get_alerts()
+{
+    if (isset($_SESSION['alerts'])) {
+        $alerts = $_SESSION['alerts'];
+        unset($_SESSION['alerts']);
+        return $alerts;
+    }
+    return array();
+}
+
+function debug($array)
+{
+    echo '<pre>';
+    print_r($array);
+    echo '</pre>';
+    exit();
+}
