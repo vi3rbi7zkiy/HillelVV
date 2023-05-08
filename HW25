@@ -1,0 +1,11 @@
+//Логер
+function logMessage($message, $userId) {
+    $logFile = 'logs.txt';
+    $logMessage = date('Y-m-d H:i:s') . ' - User ID: ' . $userId . ' - ' . $message . PHP_EOL;
+    file_put_contents($logFile, $logMessage, FILE_APPEND);
+}
+// проверка логера, в случае успеха записывается лог с идентификатором пользователя
+if ($success) {
+    logMessage('Blog added', $userId);
+   } else {
+   }
