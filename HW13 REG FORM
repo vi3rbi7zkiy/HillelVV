@@ -12,12 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($password !== $confirm_password) {
         set_alert('Passwords do not match', 'error');
     } else {
-        // perform registration logic here
-        // if successful, redirect to success page
+
         set_alert('Registration successful', 'success');
         header('Location: success.php');
         exit();
     }
+}
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    $_SESSION['error'] = "Невірний метод запиту!";
+    header('Location: registration.php');
+    exit;
 }
 
 $alerts = get_alerts();
@@ -52,3 +56,5 @@ $alerts = get_alerts();
 </form>
 </body>
 </html>
+
+
