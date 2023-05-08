@@ -1,0 +1,54 @@
+<?php
+require_once('functions.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $confirm_password = $_POST['confirm_password'] ?? '';
+
+    if (empty($name) || empty($email) || empty($password) || empty($confirm_password)) {
+        set_alert('Please fill in all fields', 'error');
+    } elseif ($password !== $confirm_password) {
+        set_alert('Passwords do not match', 'error');
+    } else {
+        // perform registration logic here
+        // if successful, redirect to success page
+        set_alert('Registration successful', 'success');
+        header('Location: success.php');
+        exit();
+    }
+}
+
+$alerts = get_alerts();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+</head>
+<body>
+<?php foreach ($alerts as $alert): ?>
+    <div class="<?php echo $alert['type']; ?>">
+        <?php echo $alert['message']; ?>
+    </div>
+<?php endforeach; ?>
+
+<form method="post">
+    <label>Name:</label>
+    <input type="text" name="name" required><br>
+
+    <label>Email:</label>
+    <input type="email" name="email" required><br>
+
+    <label>Password:</label>
+    <input type="password" name="password" required><br>
+
+    <label>Confirm Password:</label>
+    <input type="password" name="confirm_password" required><br>
+
+    <button type="submit">Register</button>
+</form>
+</body>
+</html>
