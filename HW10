@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Моя форма</title>
+    <style>
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        textarea {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        label.checkbox,
+        label.radio {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        label.checkbox input[type="checkbox"],
+        label.radio input[type="radio"] {
+            display: none;
+        }
+        label.checkbox:before,
+        label.radio:before {
+            display: inline-block;
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-right: 10px;
+            position: relative;
+            top: 5px;
+            box-sizing: border-box;
+        }
+        label.checkbox input[type="checkbox"]:checked:before,
+        label.radio input[type="radio"]:checked:before {
+            content: "\2713";
+            text-align: center;
+            font-size: 14px;
+            line-height: 1;
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+        input[type="file"] {
+            margin-top: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<form action="#" method="post">
+    <h1>Моя форма</h1>
+    <label for="name">Ім'я</label>
+    <input type="text" id="name" name="name" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+    <label for="password">Пароль</label>
+    <input type="password" id="password" name="password" required>
+    <label for="country">Країна</label>
+    <select id="country" name="country">
+        <option value="ukraine">Україна</option>
+        <option value="russia">Росія</option>
+        <option value="belarus">Білорусь</option>
+    </select
+    <form action="submit.php" method="post" enctype="multipart/form-data">
+                        <label for="files">Завантажити файли:</label>
+        <input type="file" id="avatar" name="avatar">
+        <input type="file" id="files" name="files[]" multiple>
+        <input type="file" id="avatar" name="avatar">
+
+        <input type="submit" value="Відправити">
+    </form>
