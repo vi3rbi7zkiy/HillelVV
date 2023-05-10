@@ -1,0 +1,8 @@
+function array_to_list_html($arr, $list_type = 'ul') {
+    $html = "<{$list_type}>";
+    foreach ($arr as $item) {
+        $html .= "<li>{$item}</li>";
+    }
+    $html .= "</{$list_type}>";
+    return $html;
+}
