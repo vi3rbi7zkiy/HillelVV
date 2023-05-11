@@ -1,0 +1,30 @@
+<?php
+$servername = "hillelvv";
+$username = "verb";
+$password = "verb111";
+$dbname = "112233";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+    exit;
+}
+////////////////////2
+require_once 'db_connect.php';
+
+$name = $_POST['name'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+$sql = "SELECT * FROM users WHERE email = :email";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['email' => $email]);
+
+if ($stmt->rowCount() > 0) {
+    $error = "пользователь с такой почтой уже зарегистрирован";
+} else {
+   
+}
