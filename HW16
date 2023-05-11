@@ -1,0 +1,57 @@
+<?php
+$users = array(
+  array(
+    'name' => 'Boris Jhonson',
+    'email' => 'BorisJhonson@gmail.com',
+    'password' => password_hash('password1', PASSWORD_DEFAULT),
+    'created_at' => date('Y-m-d H:i:s')
+  ),
+  array(
+    'name' => 'Boris Jhonson',
+    'email' => 'BorisJhonson1@gmail.com',
+    'password' => password_hash('password2', PASSWORD_DEFAULT),
+    'created_at' => date('Y-m-d H:i:s')
+  ),
+  array(
+    'name' => 'Boris Jhonson',
+    'email' => 'BorisJhonson2@gmail.com',
+    'password' => password_hash('password3', PASSWORD_DEFAULT),
+  ),
+  array(
+    'name' => 'Boris Jhonson',
+    'email' => 'BorisJhonson3@gmail.com',
+    'password' => password_hash('password4', PASSWORD_DEFAULT),
+  ),
+  array(
+    'name' => 'Boris Jhonson',
+    'email' => 'BorisJhonson4@gmail.com',
+    'password' => password_hash('password5', PASSWORD_DEFAULT),
+  )
+);
+/////////////2
+$servername = "hillelvv";
+$username = "verb";
+$password = "verb111";
+$dbname = "112233";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+
+$sql = "INSERT INTO users (name, email, password)
+        VALUES ('Boris Jhonson', 'BorisJhonson@gmail.com', '$2y$10$2T0LUgmz7T5E1Q2k/8Sw3e3uXZ6rYdYvKbw2aH9ZCkK2g4XH6GwFaa'),
+               ('Boris Jhonson', 'BorisJhonson1@gmail.com', '$2y$10$OtOcwTddL1xcZvWlEjUJWudGt1Q1LZOgrJjYU7OGTK5G87.nBCUDi'),
+               ('Boris Jhonson', 'BorisJhonson2@gmail.com', '$2y$10$y56S7W8v..mC0mti9lWR0.QQJlP9TfH4dXUh0juT1cpVJY4SLkVRi'),
+               ('Boris Jhonson', 'BorisJhonson3@gmail.com', '$2y$10$gRLk1zoEoRYtKp6R1.kyH.dWM7/4Ajl8hL9ej4c5OZDIL4EDmzUS2'),
+               ('Boris Jhonson', 'BorisJhonson4@gmail.com', '$2y$10$3T6/LEUxFwCEbBCCqH7LreJ4y8ViN43jh38GWk2JN7tvj5JUV7kpe');
+ //////3
+ $servername = "hillelvv";
+$username = "verb";
+$password = "verb111";
+$dbname = "112233";
+
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Connected successfully";
+} catch(PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
