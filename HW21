@@ -1,0 +1,105 @@
+// Створити функцію для збереження значення полів форми в сессію.
+function save_form_data_to_session() {
+    session_start();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $_SESSION['form_data'] = $_POST;
+    }
+}
+// Створити функцію для повернення значення полів.
+function get_form_data() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        return $_POST;
+    }
+
+    return array();
+}
+// Використати функції для форми реєстрації.
+function save_registration_form_data_to_session() {
+    session_start();
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $_SESSION['registration_form_data'] = $_POST;
+    }
+}
+
+function get_registration_form_data() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        return $_POST;
+    }
+
+    return array();
+}
+
+save_registration_form_data_to_session();
+
+$registration_form_data = get_registration_form_data();
+?>
+
+<form method="post" action="register.php">
+    <input type="text" name="name" value="<?php echo isset($registration_form_data['name']) ? $registration_form_data['name'] : ''; ?>" placeholder="Имя" required>
+    <input type="email" name="email" value="<?php echo isset($registration_form_data['email']) ? $registration_form_data['email'] : ''; ?>" placeholder="E-mail" required>
+    <input type="password" name="password" placeholder="Пароль" required>
+    <input type="password" name="confirm_password" placeholder="Подтвердить пароль" required>
+    <button type="submit">Зарегистрироваться</button>
+</form>
+//Створити форму логіну, та підготовити файл контролеру логіну, зробити валідацію полів при логіні.
+//підготовити файл контролеру логіну login_controller.php
+<?php
+session_start();
+
+function authenticate_user($email, $password) {
+    $connection = mysqli_connect('localhost', 'username', 'password', 'database_name');
+
+    $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+
+    $result = mysqli_query($connection, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $errors = array();
+
+    if (empty($email)) {
+        $errors[] = 'Введите EMAIL';
+    }
+
+    if (empty($password)) {
+        $errors[] = 'Введите пароль';
+    }
+
+    if (count($errors) > 0) {
+        foreach ($errors as $error) {
+            echo '<p>' . $error . '</p>';
+        }
+// Форма логина
+        <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Вхід</title>
+</head>
+<body>
+    <h1>Вхід</h1>
+    <form method="post" action="login_controller.php">
+        <div>
+            <label for="email">Электронная почта:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit">Войти</button>
+        </div>
+    </form>
+</body>
+</html>
